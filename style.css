@@ -1,0 +1,40 @@
+* {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+html
+body {
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+
+.largeContainer {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    border: 1px;
+    border-style: solid;
+    border-color: red;
+}
+
+.divContainer {
+    display: flex;
+    justify-content: space-around;
+    height: 6.25vh;
+    width: 100vw;
+    border: 1px;
+    border-style: solid;
+    border-color: blue;
+}
+
+.divBlock {
+    border: 1px;
+    width: 6.25vw;
+    height: 6.25vh;
+    border-style: solid;
+    color: green;
+}
