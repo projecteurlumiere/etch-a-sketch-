@@ -35,6 +35,13 @@ h1 {
     width: 75vh;
 }
 
+.sliderContainer {
+    display: flex;
+    align-items: center;
+    font-size: 2vh;
+
+}
+
 .slider {
     height: 3vh;
     margin: 0;
@@ -55,11 +62,13 @@ main {
 
 
 .largeContainer {
+    margin-top: 2.5vh;
+    margin-bottom: 2.5vh;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
-    height: 75vh;
-    width: 75vh;
+    height: 70vh;
+    width: 70vh;
     border: 1px;
     border-style: solid;
     border-color: red;
@@ -67,19 +76,18 @@ main {
 }
 
 .divContainer {
+    flex: 1 1 auto;
     display: flex;
     justify-content: space-around;
-    height: 6.25vh;
-    width: 75vh;
+    width: 70vh;
     border: 1px;
     border-style: solid;
     border-color: blue;
 }
 
 .divBlock {
+    flex: 1 1 auto;
     border: 1px;
-    width: 6.25vw;
-    height: 6.25vh;
     border-style: solid;
     border-color: green;
 }
