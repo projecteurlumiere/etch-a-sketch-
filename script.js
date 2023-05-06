@@ -10,3 +10,9 @@ for (let i = 0; i < 16; i++) {
     }
     container.appendChild(divContainer);
 }
+
+let divBlock = document.getElementsByClassName("divBlock");
+
+Array.from(divBlock).forEach(function(element) {
+    element.addEventListener("mouseover", e => element.classList.add("divBlockColored"));
+  });

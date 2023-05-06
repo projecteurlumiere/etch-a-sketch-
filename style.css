@@ -36,5 +36,9 @@ body {
     width: 6.25vw;
     height: 6.25vh;
     border-style: solid;
-    color: green;
+    border-color: green;
+}
+
+.divBlockColored {
+    background-color: black;
 }
