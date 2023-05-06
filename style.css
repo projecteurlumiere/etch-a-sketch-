@@ -1,31 +1,76 @@
 * {
     overflow-x: hidden;
     overflow-y: hidden;
+    box-sizing: border-box;
 }
 
-html
 body {
     padding: 0;
+    margin: 0;
     border: 0;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 15vh;
+    background-color: aqua;
+    padding: 1vh 0;
+}
+
+h1 {
+    font-size: 5vh;
+    text-align: center;
     margin: 0;
 }
+
+.settings {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    height: 5vh;
+    width: 75vh;
+}
+
+.slider {
+    height: 3vh;
+    margin: 0;
+}
+
+.reset {
+    font-size: 2vh;
+    height: 3vh;
+    margin: 0;
+}
+
+main {
+    display: flex;
+    height: 75vh;
+    justify-content: center;
+    background-color: antiquewhite;
+}
+
 
 .largeContainer {
     display: flex;
     justify-content: space-around;
     flex-direction: column;
-    height: 100vh;
-    width: 100vw;
+    height: 75vh;
+    width: 75vh;
     border: 1px;
     border-style: solid;
     border-color: red;
+    background-color: white;
 }
 
 .divContainer {
     display: flex;
     justify-content: space-around;
     height: 6.25vh;
-    width: 100vw;
+    width: 75vh;
     border: 1px;
     border-style: solid;
     border-color: blue;
@@ -42,3 +87,43 @@ body {
 .divBlockColored {
     background-color: black;
 }
+
+footer {
+    height: 10vh;
+    background-color: red;
+    text-align: center;
+}
+
+/* 
+
+
+html
+body {
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+
+.entourage {
+    background-color: bisque;
+    padding: 0 10vw 10vh 10vw;
+}
+
+header {
+    height: 10vh;
+}
+
+
+h1 {
+    text-align: center;
+    margin: 1vh 0 0 0;
+    padding: 0;
+    border: 0;
+}
+
+.panel {
+    margin-top: 1vh;
+    display: flex;
+    justify-content: space-around;
+}
+*/ 
