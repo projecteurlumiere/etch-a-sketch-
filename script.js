@@ -1,22 +1,6 @@
-// slider functionality:
-
-let slider = document.getElementById("myRange");
-let output = document.getElementById("demo");
-output.innerHTML = slider.value;
-
-slider.oninput = function() {
-  output.innerHTML = this.value;
-  removeDivs();
-  countDivs();
-  paintBlack();
-}
-
 // loop for making squared divs and initial board:
 
 let container = document.getElementsByClassName("largeContainer")[0];
-
-countDivs();
-paintBlack();
 
 function countDivs(){
   for (let i = 0; i < slider.value; i++) {
@@ -30,14 +14,37 @@ function countDivs(){
       container.appendChild(divContainer);
   }
 }
-// painting them with black class:
 
-function paintBlack(){
-let divBlock = document.getElementsByClassName("divBlock");
-Array.from(divBlock).forEach(function(element) {
-    element.addEventListener("mouseover", e => element.classList.add("divBlockColored"));
-  });
+// slider
+
+let slider = document.getElementsByClassName("slider")[0];
+let output = document.getElementsByClassName("px")[0];
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = slider.value;
+  removeDivs();
+  countDivs();
+  colorfy();
 }
+
+// currentColor:
+
+let getColor = document.getElementsByClassName("color")[0];
+let currentColor = getColor.value;
+getColor.oninput = function() {
+  return currentColor = getColor.value;
+}
+
+// colorfy: 
+
+function colorfy(){
+  let divBlock = document.getElementsByClassName("divBlock");
+  Array.from(divBlock).forEach(function(element) {
+      element.addEventListener("mouseover", e => element.style.cssText = `background-color: ${currentColor};`);
+    });
+  }
+
 
 // function for removing:
 
@@ -54,5 +61,17 @@ let resetScreen = document.getElementsByClassName("reset")[0];
 resetScreen.onclick = function(){
   removeDivs();
   countDivs();
-  paintBlack();
+  colorfy();
 }
+
+// button eraser
+
+let eraserButton = document.getElementsByClassName("eraser")[0];
+eraserButton.onclick = function(){
+  currentColor = "#FFFFFF"
+}
+
+// first iteration: 
+
+countDivs();
+colorfy();

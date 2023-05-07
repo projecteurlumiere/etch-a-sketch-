@@ -16,7 +16,7 @@ header {
     align-items: center;
     justify-content: space-between;
     height: 15vh;
-    background-color: aqua;
+    background-color: #E8E1DB;
     padding: 1vh 0;
 }
 
@@ -32,7 +32,7 @@ h1 {
     justify-content: space-around;
     align-items: center;
     height: 5vh;
-    width: 75vh;
+    width: 70vh;
 }
 
 .sliderContainer {
@@ -57,7 +57,7 @@ main {
     display: flex;
     height: 75vh;
     justify-content: center;
-    background-color: antiquewhite;
+    background-color: #A9AC5D;
 }
 
 
@@ -84,12 +84,12 @@ main {
 }
 
 .divBlockColored {
-    background-color: black;
+    background-color: #000000;
 }
 
 footer {
     height: 10vh;
-    background-color: red;
+    background-color: #6D6C3C;
     text-align: center;
 }
 

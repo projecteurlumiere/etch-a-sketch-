@@ -12,9 +12,13 @@
         <h1>Etch-a-Sketch</h1>
         <div class="settings">
             <div class="sliderContainer">
-                <input type="range" min="1" max="100" value="16" class="slider" id="myRange">
-                <p><span id="demo"></span>px</p>
+                <input type="range" min="1" max="100" value="16" class="slider">
+                <p><span class="px"></span>px</p>
             </div>
+            <div class="colorContainer">
+                <input class="color" type="color" id="head" name="head" value="#000000">
+            </div>
+            <button class="eraser">Eraser</button>
             <button class="reset">Reset</button>
         </div>
     </header>
