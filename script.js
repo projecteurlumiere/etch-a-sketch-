@@ -40,8 +40,15 @@ getColor.oninput = function() {
 
 function colorfy(){
   let divBlock = document.getElementsByClassName("divBlock");
+  let MDOWN = false;
   Array.from(divBlock).forEach(function(element) {
-      element.addEventListener("mouseover", e => element.style.cssText = `background-color: ${currentColor};`);
+      ["mousedown", "mouseup"].forEach(eventName => element.addEventListener(eventName, () => MDOWN = !MDOWN));
+      element.onclick = function() {element.style.cssText = `background-color: ${currentColor};`}
+      document.addEventListener("mouseup", () => MDOWN = false); // fix for keep drawing when mouseup outside of the window
+      element.addEventListener("mouseover", e => { 
+        if (MDOWN) {
+          element.style.cssText = `background-color: ${currentColor};`
+        }});
     });
   }
 
@@ -70,6 +77,10 @@ let eraserButton = document.getElementsByClassName("eraser")[0];
 eraserButton.onclick = function(){
   currentColor = "#FFFFFF"
 }
+
+// drag fix:
+let largeContainer = document.querySelector(".largeContainer")
+largeContainer.ondragstart = () => { return false };
 
 // first iteration: 
 
