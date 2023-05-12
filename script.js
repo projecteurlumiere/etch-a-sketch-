@@ -8,7 +8,7 @@ function countDivs(){
       divContainer.classList.add("divContainer");
       for (let i = 0; i < slider.value; i++) {
           let divBlock = document.createElement("div");
-          divBlock.classList.add("divBlock");
+          divBlock.classList.add("divBlock", "colorFalse");
           divContainer.appendChild(divBlock);
       }
       container.appendChild(divContainer);
@@ -36,6 +36,15 @@ getColor.oninput = function() {
   return currentColor = getColor.value;
 }
 
+function giveColorClass(div) {
+  if (currentColor != getColorBackground.value) {
+  div.classList.remove("colorFalse");
+  div.classList.add("colorTrue")}
+  else {
+  div.classList.add("colorFalse");
+  div.classList.remove("colorTrue")}
+}
+
 // colorfy: 
 
 function colorfy(){
@@ -43,14 +52,31 @@ function colorfy(){
   let MDOWN = false;
   Array.from(divBlock).forEach(function(element) {
       ["mousedown", "mouseup"].forEach(eventName => element.addEventListener(eventName, () => MDOWN = !MDOWN));
-      element.onclick = function() {element.style.cssText = `background-color: ${currentColor};`}
+      element.onclick = function() {
+        element.style.cssText = `background-color: ${currentColor};`; 
+        giveColorClass(element)}
       document.addEventListener("mouseup", () => MDOWN = false); // fix for keep drawing when mouseup outside of the window
       element.addEventListener("mouseover", e => { 
         if (MDOWN) {
-          element.style.cssText = `background-color: ${currentColor};`
-        }});
-    });
-  }
+        element.style.cssText = `background-color: ${currentColor};`;
+        giveColorClass(element)}
+        }
+      );
+  });
+}
+
+// currentColorBackground:
+
+let getColorBackground = document.getElementsByClassName("colorBackground")[0];
+getColorBackground.oninput = function() {
+  let colorFalseDivs = document.getElementsByClassName("colorFalse");
+  let currentColorBackground = getColorBackground.value
+  Array.from(colorFalseDivs).forEach(function(e) {
+      e.style.cssText = `background-color: ${currentColorBackground};`;
+  });
+}
+
+// changeBackground
 
 
 // function for removing:
@@ -75,7 +101,7 @@ resetScreen.onclick = function(){
 
 let eraserButton = document.getElementsByClassName("eraser")[0];
 eraserButton.onclick = function(){
-  currentColor = "#FFFFFF"
+  currentColor = getColorBackground.value;
 }
 
 // drag fix:

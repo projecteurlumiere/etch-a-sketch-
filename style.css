@@ -82,14 +82,10 @@ main {
 .divBlock {
     flex: 1 1 auto;
     cursor: crosshair;
-    -webkit-user-drag: none;
 }
 
 .divBlockColored {
-    background-color: #000000;
-    cursor: crosshair;
-    -webkit-user-drag: none;
-    
+
 }
 
 footer {
