@@ -13,6 +13,7 @@ function countDivs(){
       }
       container.appendChild(divContainer);
   }
+  Array.from(document.getElementsByClassName("divBlock")).forEach(e => e.style.cssText = `background-color: ${getColorBackground.value};`)
 }
 
 // slider
@@ -76,9 +77,6 @@ getColorBackground.oninput = function() {
   });
 }
 
-// changeBackground
-
-
 // function for removing:
 
 function removeDivs() {
@@ -102,6 +100,8 @@ resetScreen.onclick = function(){
 let eraserButton = document.getElementsByClassName("eraser")[0];
 eraserButton.onclick = function(){
   currentColor = getColorBackground.value;
+  getColorBackground.addEventListener("change", () => currentColor = getColorBackground.value);
+  getColor.addEventListener("click", () => getColorBackground.removeEventListener)
 }
 
 // drag fix:
