@@ -82,6 +82,8 @@ main {
 .divBlock {
     flex: 1 1 auto;
     cursor: crosshair;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 .divBlockColored {

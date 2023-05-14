@@ -48,7 +48,34 @@ function giveColorClass(div) {
 
 // colorfy: 
 
+
+
 function colorfy(){
+  let largeContainer = document.querySelector(".largeContainer");
+  let MDOWN = false;
+  ["mousedown", "mouseup"].forEach(eventName => largeContainer.addEventListener(eventName, () => MDOWN = !MDOWN));
+  document.addEventListener("mouseup", () => MDOWN = false);
+  
+  largeContainer.onclick = function(event) {
+    let target = event.target;
+    console.log(target);
+    if (!"divBlock") return;
+    target.style.cssText = `background-color: ${currentColor};`;
+    giveColorClass(target);
+  }
+  largeContainer.onmouseover = function(event) {
+    if (MDOWN) {
+      let target = event.target;
+      if (!"divBlock") return;
+      target.style.cssText = `background-color: ${currentColor};`;
+      giveColorClass(target)
+    }
+  }
+}
+
+// previous colorfy or how not to do it (event delegation > assigning eventListeners to every single node)
+
+/* function colorfy(){
   let divBlock = document.getElementsByClassName("divBlock");
   let MDOWN = false;
   Array.from(divBlock).forEach(function(element) {
@@ -57,7 +84,7 @@ function colorfy(){
         element.style.cssText = `background-color: ${currentColor};`; 
         giveColorClass(element)}
       document.addEventListener("mouseup", () => MDOWN = false); // fix for keep drawing when mouseup outside of the window
-      element.addEventListener("mouseover", e => { 
+      element.addEventListener("mouseover", () => { 
         if (MDOWN) {
         element.style.cssText = `background-color: ${currentColor};`;
         giveColorClass(element)}
@@ -65,6 +92,7 @@ function colorfy(){
       );
   });
 }
+*/
 
 // currentColorBackground:
 
@@ -80,7 +108,7 @@ getColorBackground.oninput = function() {
 // function for removing:
 
 function removeDivs() {
-let elementsRemove = document.getElementsByClassName("divContainer");
+  let elementsRemove = document.getElementsByClassName("divContainer");
   Array.from(elementsRemove).forEach(function(element) {
     element.remove();
   })
