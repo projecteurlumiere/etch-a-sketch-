@@ -11,18 +11,61 @@
     <header>
         <h1>Etch-a-Sketch</h1>
         <div class="settings">
-            <div class="sliderContainer">
-                <input type="range" class="slider" value="16" min="1" max="100"></input>
-                <p><span class="px"></span>px</p>
+            <div class="setting">
+                <div class="name">Color</div>
+                <div class="option">
+                    <div class="colorContainer">
+                    <input class="color" type="color" id="head" name="head" value="#000000">
+                    </div>
+                </div>
+                <div class="select">
+                    <input class="colorSelect" type="radio" name="head" value="#000000">
+                </div>
             </div>
-            <div class="colorContainer">
-                <input class="color" type="color" id="head" name="head" value="#000000">
+            <div class="setting">
+                <div class="name">Random</div>
+                <div class="option"></div>
+                <div class="select">
+                    <input class="colorSelect" type="radio" name="head" value="#000000">
+                </div>
             </div>
-            <div class="colorBackgroundContainer">
-                <input class="colorBackground" type="color" id="head" name="head" value="#FFFFFF">
+            <div class="setting">
+                <div class="name">Eraser</div>
+                <div class="option">
+                    <button class="eraser">Eraser</button>
+                </div>
+                <div class="select">
+                    <input class="colorSelect" type="radio" name="head" value="#000000">
+                </div>
             </div>
-            <button class="eraser">Eraser</button>
-            <button class="reset">Reset</button>
+            <div class="setting">
+                <div class="name">Background color</div>
+                <div class="option">
+                    <div class="colorBackgroundContainer">
+                        <input class="colorBackground" type="color" id="head" name="head" value="#FFFFFF">
+                    </div>
+                </div>
+                <div class="select">
+                </div>
+            </div>
+            <div class="setting">
+                <div class="name">Size</div>
+                <div class="option">
+                    <div class="sliderContainer">
+                        <input type="range" class="slider" value="16" min="1" max="100"></input>
+                        <p><span class="px"></span>px</p>
+                    </div>
+                </div>
+                <div class="select"></div>
+            </div>
+            <div class="setting">
+                <div class="name"></div>
+                <div class="option">
+                    <button class="reset">Reset</button>
+                </div>
+                <div class="select">
+                </div>
+            </div>
         </div>
     </header>
     <main>

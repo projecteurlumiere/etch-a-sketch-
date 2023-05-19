@@ -15,7 +15,7 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: 15vh;
+    height: 25vh;
     background-color: #E8E1DB;
     padding: 1vh 0;
 }
@@ -31,8 +31,8 @@ h1 {
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
-    height: 5vh;
     width: 70vh;
+    text-align: center;
 }
 
 .sliderContainer {
