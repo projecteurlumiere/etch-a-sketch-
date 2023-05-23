@@ -6,89 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="style.css" rel="stylesheet">
+    <script defer src="script.js"></script>
 </head>
 <body>
     <header>
         <h1>Etch-a-Sketch</h1>
-        <div class="settings">
-            <div class="setting">
-                <div class="name">Color</div>
-                <div class="option">
-                    <div class="colorContainer">
+    </header>
+    <main>
+        <div class="paintContainer">
+            <div class="settings-top">
+                <div class="colorContainer">
+                    <div class="optionName">Color</div>
                     <input class="color" type="color" id="head" name="head" value="#000000">
+                    <div class="buttonsContainer">
+                        <button class="paintCustomButton">Paint Custom</button>
+                        <button class="paintRandomButton">Paint Random</button>
                     </div>
                 </div>
-                <div class="select">
-                    <input class="colorSelect" type="radio" name="head" value="#000000">
-                </div>
-            </div>
-            <div class="setting">
-                <div class="name">Random</div>
-                <div class="option"></div>
-                <div class="select">
-                    <input class="colorSelect" type="radio" name="head" value="#000000">
-                </div>
-            </div>
-            <div class="setting">
-                <div class="name">Eraser</div>
-                <div class="option">
+                <div class="eraserContainer">
+                    <div class="optionName">Eraser</div>
                     <button class="eraser">Eraser</button>
                 </div>
-                <div class="select">
-                    <input class="colorSelect" type="radio" name="head" value="#000000">
+                <div class="backgroundColorContainer">
+                    <div class="optionName">Background color</div>
+                    <input class="colorBackground" type="color" id="head" name="head" value="#FFFFFF">
                 </div>
             </div>
-            <div class="setting">
-                <div class="name">Background color</div>
-                <div class="option">
-                    <div class="colorBackgroundContainer">
-                        <input class="colorBackground" type="color" id="head" name="head" value="#FFFFFF">
-                    </div>
+            <div class="largeContainer"></div>
+            <div class="settings-bottom">
+                <div class="sliderContainer">
+                    <input type="range" class="slider" value="16" min="1" max="100"></input>
+                    <p><span class="px"></span>px</p>
                 </div>
-                <div class="select">
-                </div>
-            </div>
-            <div class="setting">
-                <div class="name">Size</div>
-                <div class="option">
-                    <div class="sliderContainer">
-                        <input type="range" class="slider" value="16" min="1" max="100"></input>
-                        <p><span class="px"></span>px</p>
-                    </div>
-                </div>
-                <div class="select"></div>
-            </div>
-            <div class="setting">
-                <div class="name"></div>
-                <div class="option">
+                <div class="resetContainer">
                     <button class="reset">Reset</button>
-                </div>
-                <div class="select">
                 </div>
             </div>
         </div>
-    </header>
-    <main>
-        <div class="largeContainer"></div>
-        <script src="script.js"></script>
     </main>
     <footer>
-        <p>All right reserved 2023</p>
+        <p>2023</p>
     </footer>
 </body>
 </html>
-
-<!-- 
-
-    <div class="entourage">
-        <header>
-            <h1>Etch-a-Sketch</h1>
-            <div class="panel">
-                <div class="sliderContainer">
-                    <input type="range" min="1" max="100" value="16" class="slider">
-                </div>
-                <button>Reset</button>
-            </div>
-        </header>
-
--->
