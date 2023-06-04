@@ -33,17 +33,21 @@ h1 {
 main {
     display: flex;
     flex-direction: column;
-    height: 90vh;
-    justify-content: center;
-    align-items: center;
+    height: 86vh;
     background-color: #A9AC5D;
 }
 
 .paintContainer {
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+button {
+    background-color: #E8E1DB;
+    border-radius: 10px;
 }
 
 .settings-top,
@@ -52,15 +56,25 @@ main {
     width: var(--canvas-size);
 }
 
-.buttonsContainer {
-    display: flex;
-    flex-direction: row;
+.optionName {
+    margin-bottom: 0.5rem;
 }
 
 .settings-top > div {
     display: flex;
     flex-direction: column;
-    
+    width: 37.5%;
+    text-align: center;
+}
+
+.color,
+.colorBackground {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.color {
+    height: 40%;
 }
 
 .colorContainer,
@@ -68,8 +82,36 @@ main {
     width: calc(var(--canvas-size) / 3);
 }
 
+.buttonsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.3rem;
+    margin-top: auto;
+}
+
+.buttonsContainer > button {
+    height: 1.5rem;
+    width: 50%;
+}
+
 .eraserContainer {
     width: calc(var(--canvas-size) / 3);
+}
+
+.eraserContainer {
+    width: 25% !important;
+}
+
+.eraser {
+    margin: auto;
+    border-radius: 50% !important;
+    aspect-ratio: 1 / 1;
+    width: 50%;
+}
+
+.colorBackground {
+    height: 70%;
 }
 
 .sliderContainer {
@@ -77,6 +119,14 @@ main {
     align-items: center;
     font-size: 1rem;
     width: calc(var(--canvas-size) / 3 * 2);
+}
+
+.slider {
+    width: 85%;
+}
+
+.sliderContainer > p {
+    margin: 0 auto;
 }
 
 .reset {
