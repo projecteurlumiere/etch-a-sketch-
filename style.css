@@ -2,6 +2,17 @@
     overflow-x: hidden;
     overflow-y: hidden;
     box-sizing: border-box;
+    font-family: Baloo2;
+}
+
+@font-face {
+    font-family: ArchitectsDaughter;
+    src: url(fonts/ArchitectsDaughter-Regular.ttf);
+}
+
+@font-face {
+    font-family: Baloo2;
+    src: url(fonts/Baloo2-VariableFont_wght.ttf);
 }
 
 :root {
@@ -20,12 +31,14 @@ header {
     align-items: center;
     justify-content: space-between;
     height: 4rem;
-    background-color: #E8E1DB;
+    background-color: #3c536f;
     padding: 1rem 0;
 }
 
 h1 {
     font-size: 2rem;
+    font-family: ArchitectsDaughter;
+    color: white;
     text-align: center;
     margin: 0;
 }
@@ -34,7 +47,7 @@ main {
     display: flex;
     flex-direction: column;
     height: 86vh;
-    background-color: #A9AC5D;
+    background-color: #ec8c70;
 }
 
 .paintContainer {
@@ -46,18 +59,19 @@ main {
 }
 
 button {
-    background-color: #E8E1DB;
+    background-color: #fcb974;
     border-radius: 10px;
 }
 
 .settings-top,
 .settings-bottom {
     display: flex;
+    flex-shrink: 0;
     width: var(--canvas-size);
 }
 
 .optionName {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.1rem;
 }
 
 .settings-top > div {
@@ -95,6 +109,10 @@ button {
     width: 50%;
 }
 
+.buttonActive {
+    border: dotted 2px #3c536f; 
+}
+
 .eraserContainer {
     width: calc(var(--canvas-size) / 3);
 }
@@ -123,6 +141,7 @@ button {
 
 .slider {
     width: 85%;
+    color: #fcb974;
 }
 
 .sliderContainer > p {
@@ -168,5 +187,5 @@ footer {
     bottom: 0;
     height: 4rem;
     width: 100vw;
-    background-color: #6D6C3C;
+    background-color: #fcb974;
 }
