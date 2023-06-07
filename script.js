@@ -26,6 +26,7 @@ function countDivs(){
 
 let slider = document.getElementsByClassName("slider")[0];
 let output = document.getElementsByClassName("px")[0];
+
 output.innerHTML = slider.value;
 
 slider.oninput = function() {
@@ -39,12 +40,12 @@ slider.oninput = function() {
 
 let getColor = document.getElementsByClassName("color")[0];
 let currentColor = getColor.value;
+
 getColor.oninput = () => { assignCustomColor() };
 customButton.onclick = () => { assignCustomColor() };
 
 function assignCustomColor() {
   console.log("button pressed");
-  stopRandomColor()
   highlightButton(customButton);
   return currentColor = getColor.value;
 }
@@ -54,12 +55,12 @@ let intervalId
 
 randomButton.onclick = () => { 
   console.log("random clicked");
-  stopRandomColor()
+  highlightButton(randomButton);
   intervalId = setInterval(() => {
     currentColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
     getColor.value = currentColor;
   }, 50);
-  highlightButton(randomButton);
+  
 }
 
 function stopRandomColor() {
@@ -67,6 +68,13 @@ function stopRandomColor() {
 }
 
 // colorfy: 
+
+function changeColor(event) {
+  let target = event.target;
+  if (!"divBlock") return;
+  target.style.cssText = `background-color: ${currentColor};`;
+  giveColorClass(target);
+}
 
 function giveColorClass(div) {
   if (currentColor != getColorBackground.value) {
@@ -83,26 +91,20 @@ function colorfy(){
   ["mousedown", "mouseup"].forEach(eventName => largeContainer.addEventListener(eventName, () => MDOWN = !MDOWN));
   document.addEventListener("mouseup", () => MDOWN = false);
   
-  largeContainer.onclick = function(event) {
-    let target = event.target;
-    console.log(target);
-    if (!"divBlock") return;
-    target.style.cssText = `background-color: ${currentColor};`;
-    giveColorClass(target);
-  }
-  largeContainer.onmouseover = function(event) {
+
+  ["onclick", "onmousedown"].forEach(eventName => largeContainer.addEventListener(eventName, (event) => changeColor(event)));
+  largeContainer.onmouseover = (event) => {
     if (MDOWN) {
-      let target = event.target;
-      if (!"divBlock") return;
-      target.style.cssText = `background-color: ${currentColor};`;
-      giveColorClass(target)
+      changeColor(event)
     }
   }
 }
 
-// previous colorfy or how not to do it (event delegation > assigning eventListeners to every single node)
+// previous colorfy or how not to do it (event delegation is better assigning eventListeners to every single div)
 
-/* function colorfy(){
+/* 
+
+function colorfy(){
   let divBlock = document.getElementsByClassName("divBlock");
   let MDOWN = false;
   Array.from(divBlock).forEach(function(element) {
@@ -119,11 +121,13 @@ function colorfy(){
       );
   });
 }
+
 */
 
 // currentColorBackground:
 
 let getColorBackground = document.getElementsByClassName("colorBackground")[0];
+
 getColorBackground.oninput = function() {
   let colorFalseDivs = document.getElementsByClassName("colorFalse");
   let currentColorBackground = getColorBackground.value
@@ -144,6 +148,7 @@ function removeDivs() {
 // button reset
 
 let resetScreen = document.getElementsByClassName("reset")[0];
+
 resetScreen.onclick = function(){
   removeDivs();
   countDivs();
@@ -154,7 +159,6 @@ resetScreen.onclick = function(){
 
 eraserButton.onclick = function(){
   console.log("reset pressed")
-  stopRandomColor()
   highlightButton(eraserButton);
   currentColor = getColorBackground.value;
   getColorBackground.addEventListener("change", () => currentColor = getColorBackground.value);
@@ -162,15 +166,14 @@ eraserButton.onclick = function(){
 }
 
 // drag fix:
+
 let largeContainer = document.querySelector(".largeContainer")
 largeContainer.ondragstart = () => { return false };
 
 // color a button (color, random, eraser) and decolor others
 
-
-// eraser button is defined as eraserButton in button eraser section
-
 function highlightButton(button) {
+  stopRandomColor();
   button.classList.add("buttonActive");
   restButtons = [customButton, randomButton, eraserButton].filter(function(e) { return e !== button});
   restButtons.forEach(e => e.classList.remove("buttonActive"));
@@ -180,3 +183,4 @@ function highlightButton(button) {
 
 countDivs();
 colorfy();
+highlightButton(customButton)
