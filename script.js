@@ -91,8 +91,8 @@ function colorfy(){
   ["mousedown", "mouseup"].forEach(eventName => largeContainer.addEventListener(eventName, () => MDOWN = !MDOWN));
   document.addEventListener("mouseup", () => MDOWN = false);
   
-
-  ["onclick", "onmousedown"].forEach(eventName => largeContainer.addEventListener(eventName, (event) => changeColor(event)));
+  largeContainer.onclick = (event) => changeColor(event);
+  largeContainer.onmousedown = (event) => changeColor(event);
   largeContainer.onmouseover = (event) => {
     if (MDOWN) {
       changeColor(event)
