@@ -1,3 +1,9 @@
+// various variables
+
+let customButton = document.getElementsByClassName("paintCustomButton")[0];
+let randomButton = document.getElementsByClassName("paintRandomButton")[0];
+let eraserButton = document.getElementsByClassName("eraser")[0];
+
 // loop for making squared divs and initial board:
 
 let container = document.getElementsByClassName("largeContainer")[0];
@@ -29,13 +35,38 @@ slider.oninput = function() {
   colorfy();
 }
 
-// currentColor:
+// currentColor or assign custom color
 
 let getColor = document.getElementsByClassName("color")[0];
 let currentColor = getColor.value;
-getColor.oninput = function() {
+getColor.oninput = () => { assignCustomColor() };
+customButton.onclick = () => { assignCustomColor() };
+
+function assignCustomColor() {
+  console.log("button pressed");
+  stopRandomColor()
+  highlightButton(customButton);
   return currentColor = getColor.value;
 }
+
+// randomColor
+let intervalId
+
+randomButton.onclick = () => { 
+  console.log("random clicked");
+  stopRandomColor()
+  intervalId = setInterval(() => {
+    currentColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+    getColor.value = currentColor;
+  }, 50);
+  highlightButton(randomButton);
+}
+
+function stopRandomColor() {
+  clearInterval(intervalId);
+}
+
+// colorfy: 
 
 function giveColorClass(div) {
   if (currentColor != getColorBackground.value) {
@@ -45,10 +76,6 @@ function giveColorClass(div) {
   div.classList.add("colorFalse");
   div.classList.remove("colorTrue")}
 }
-
-// colorfy: 
-
-
 
 function colorfy(){
   let largeContainer = document.querySelector(".largeContainer");
@@ -125,8 +152,10 @@ resetScreen.onclick = function(){
 
 // button eraser
 
-let eraserButton = document.getElementsByClassName("eraser")[0];
 eraserButton.onclick = function(){
+  console.log("reset pressed")
+  stopRandomColor()
+  highlightButton(eraserButton);
   currentColor = getColorBackground.value;
   getColorBackground.addEventListener("change", () => currentColor = getColorBackground.value);
   getColor.addEventListener("click", () => getColorBackground.removeEventListener)
@@ -135,6 +164,17 @@ eraserButton.onclick = function(){
 // drag fix:
 let largeContainer = document.querySelector(".largeContainer")
 largeContainer.ondragstart = () => { return false };
+
+// color a button (color, random, eraser) and decolor others
+
+
+// eraser button is defined as eraserButton in button eraser section
+
+function highlightButton(button) {
+  button.classList.add("buttonActive");
+  restButtons = [customButton, randomButton, eraserButton].filter(function(e) { return e !== button});
+  restButtons.forEach(e => e.classList.remove("buttonActive"));
+}
 
 // first iteration: 
 

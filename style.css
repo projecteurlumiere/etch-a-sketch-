@@ -46,7 +46,7 @@ h1 {
 main {
     display: flex;
     flex-direction: column;
-    height: 86vh;
+    height: 88vh;
     background-color: #ec8c70;
 }
 
