@@ -16,7 +16,7 @@ function countDivs(){
           let divBlock = document.createElement("div");
           divBlock.classList.add("divBlock", "colorFalse");
           divContainer.appendChild(divBlock);
-      }
+      };
       container.appendChild(divContainer);
   }
   Array.from(document.getElementsByClassName("divBlock")).forEach(e => e.style.cssText = `background-color: ${getColorBackground.value};`)
@@ -45,7 +45,6 @@ getColor.oninput = () => { assignCustomColor() };
 customButton.onclick = () => { assignCustomColor() };
 
 function assignCustomColor() {
-  console.log("button pressed");
   highlightButton(customButton);
   return currentColor = getColor.value;
 }
@@ -54,13 +53,11 @@ function assignCustomColor() {
 let intervalId
 
 randomButton.onclick = () => { 
-  console.log("random clicked");
   highlightButton(randomButton);
   intervalId = setInterval(() => {
-    currentColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+    currentColor = `#${(0x1000000+Math.random()*0xffffff).toString(16).substr(1,6)}`;
     getColor.value = currentColor;
   }, 50);
-  
 }
 
 function stopRandomColor() {
@@ -100,29 +97,26 @@ function colorfy(){
   }
 }
 
-// previous colorfy or how not to do it (event delegation is better assigning eventListeners to every single div)
+// previous colorfy or how not to do it: 
+// event delegation is better assigning eventListeners to every single div
 
-/* 
-
-function colorfy(){
-  let divBlock = document.getElementsByClassName("divBlock");
-  let MDOWN = false;
-  Array.from(divBlock).forEach(function(element) {
-      ["mousedown", "mouseup"].forEach(eventName => element.addEventListener(eventName, () => MDOWN = !MDOWN));
-      element.onclick = function() {
-        element.style.cssText = `background-color: ${currentColor};`; 
-        giveColorClass(element)}
-      document.addEventListener("mouseup", () => MDOWN = false); // fix for keep drawing when mouseup outside of the window
-      element.addEventListener("mouseover", () => { 
-        if (MDOWN) {
-        element.style.cssText = `background-color: ${currentColor};`;
-        giveColorClass(element)}
-        }
-      );
-  });
-}
-
-*/
+// function colorfy(){
+//   let divBlock = document.getElementsByClassName("divBlock");
+//   let MDOWN = false;
+//   Array.from(divBlock).forEach(function(element) {
+//       ["mousedown", "mouseup"].forEach(eventName => element.addEventListener(eventName, () => MDOWN = !MDOWN));
+//       element.onclick = function() {
+//         element.style.cssText = `background-color: ${currentColor};`; 
+//         giveColorClass(element)}
+//       document.addEventListener("mouseup", () => MDOWN = false); // fix for keep drawing when mouseup outside of the window
+//       element.addEventListener("mouseover", () => { 
+//         if (MDOWN) {
+//         element.style.cssText = `background-color: ${currentColor};`;
+//         giveColorClass(element)}
+//         }
+//       );
+//   });
+// }
 
 // currentColorBackground:
 
@@ -130,7 +124,7 @@ let getColorBackground = document.getElementsByClassName("colorBackground")[0];
 
 getColorBackground.oninput = function() {
   let colorFalseDivs = document.getElementsByClassName("colorFalse");
-  let currentColorBackground = getColorBackground.value
+  let currentColorBackground = getColorBackground.value;
   Array.from(colorFalseDivs).forEach(function(e) {
       e.style.cssText = `background-color: ${currentColorBackground};`;
   });
@@ -158,7 +152,6 @@ resetScreen.onclick = function(){
 // button eraser
 
 eraserButton.onclick = function(){
-  console.log("reset pressed")
   highlightButton(eraserButton);
   currentColor = getColorBackground.value;
   getColorBackground.addEventListener("change", () => currentColor = getColorBackground.value);
@@ -183,4 +176,4 @@ function highlightButton(button) {
 
 countDivs();
 colorfy();
-highlightButton(customButton)
+highlightButton(customButton);
