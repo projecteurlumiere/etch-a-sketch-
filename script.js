@@ -40,17 +40,24 @@ slider.oninput = function() {
 
 let getColor = document.getElementsByClassName("color")[0];
 let currentColor = getColor.value;
+let lastCurrentColor = currentColor;
+let randomClicked = false;
 
 getColor.oninput = () => { assignCustomColor() };
-customButton.onclick = () => { assignCustomColor() };
+customButton.onclick = () => { 
+  setLastColor();
+  assignCustomColor(); 
+};
 
 function assignCustomColor() {
   highlightButton(customButton);
-  return currentColor = getColor.value;
+  currentColor = getColor.value;
+  lastCurrentColor = currentColor
 }
 
 // randomColor
-let intervalId
+
+let intervalId;
 
 randomButton.onclick = () => { 
   highlightButton(randomButton);
@@ -153,6 +160,7 @@ resetScreen.onclick = function(){
 
 eraserButton.onclick = function(){
   highlightButton(eraserButton);
+  setLastColor();
   currentColor = getColorBackground.value;
   getColorBackground.addEventListener("change", () => currentColor = getColorBackground.value);
   getColor.addEventListener("click", () => getColorBackground.removeEventListener)
@@ -170,6 +178,10 @@ function highlightButton(button) {
   button.classList.add("buttonActive");
   restButtons = [customButton, randomButton, eraserButton].filter(function(e) { return e !== button});
   restButtons.forEach(e => e.classList.remove("buttonActive"));
+}
+
+function setLastColor(){
+  getColor.value = lastCurrentColor
 }
 
 // first iteration: 
