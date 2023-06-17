@@ -57,18 +57,18 @@ function assignCustomColor() {
 
 // randomColor
 
-let intervalId;
+let intervalRandomColor;
 
 randomButton.onclick = () => { 
   highlightButton(randomButton);
-  intervalId = setInterval(() => {
+  intervalRandomColor = setInterval(() => {
     currentColor = `#${(0x1000000+Math.random()*0xffffff).toString(16).substr(1,6)}`;
     getColor.value = currentColor;
   }, 50);
 }
 
 function stopRandomColor() {
-  clearInterval(intervalId);
+  clearInterval(intervalRandomColor);
 }
 
 // colorfy: 
@@ -78,6 +78,7 @@ function changeColor(event) {
   if (!"divBlock") return;
   target.style.cssText = `background-color: ${currentColor};`;
   giveColorClass(target);
+  save();
 }
 
 function giveColorClass(div) {
@@ -152,6 +153,7 @@ let resetScreen = document.getElementsByClassName("reset")[0];
 
 resetScreen.onclick = function(){
   removeDivs();
+  removeSave();
   countDivs();
   colorfy();
 }
@@ -184,8 +186,41 @@ function setLastColor(){
   getColor.value = lastCurrentColor
 }
 
+// local storage
+
+function save(){
+  localStorage.setItem("canvas", container.innerHTML);
+  if (typeof intervalRandomColor === "undefined") {
+    console.log("regular proc")
+    localStorage.setItem("color", getColor.value);
+  }
+  else {
+    console.log("irregular proc")
+    localStorage.setItem("color", lastCurrentColor)
+  }
+  localStorage.setItem("backgroundColor", getColorBackground.value);
+}
+
+function load(){
+  container.innerHTML = localStorage.getItem("canvas");
+  getColor.value = localStorage.getItem("color");
+  currentColor = getColor.value
+  getColorBackground.value = localStorage.getItem("backgroundColor");
+}
+
+function removeSave(){
+  localStorage.removeItem("canvas");
+}
+
 // first iteration: 
 
-countDivs();
+if (localStorage.getItem("canvas") === null) {
+  countDivs();
+}
+else {
+  load()
+}
+
 colorfy();
 highlightButton(customButton);
+
