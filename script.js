@@ -199,6 +199,7 @@ function save(){
     localStorage.setItem("color", lastCurrentColor)
   }
   localStorage.setItem("backgroundColor", getColorBackground.value);
+  localStorage.setItem("size", slider.value)
 }
 
 function load(){
@@ -206,6 +207,8 @@ function load(){
   getColor.value = localStorage.getItem("color");
   currentColor = getColor.value
   getColorBackground.value = localStorage.getItem("backgroundColor");
+  slider.value = localStorage.getItem("size", slider.value)
+  output.innerHTML = slider.value
 }
 
 function removeSave(){
